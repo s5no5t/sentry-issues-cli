@@ -36,8 +36,6 @@ async function main() {
 
   const issues = axiosResponse.data;
 
-  // eslint-disable-next-line no-console
-  // console.log(issues.data);
   if (issues.length > 0) {
     console.log(
       issues.length === 1
@@ -57,7 +55,6 @@ void (async function () {
   try {
     await main();
   } catch (e) {
-    // eslint-disable-next-line no-console
     console.error(e.message);
     process.exit(1);
   }
