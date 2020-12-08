@@ -28,6 +28,14 @@ async function main() {
       "Time interval in which issues were last seen (see https://docs.sentry.io/product/sentry-basics/search for details)",
   });
 
+  yargsConfig.option("fail", {
+    type: "boolean",
+    demandOption: false,
+    default: true,
+    description:
+      "Return non-zero code when there is at least one unresolved issue in Sentry",
+  });
+
   const args = yargsConfig.argv;
 
   console.log(
@@ -56,7 +64,7 @@ async function main() {
     for (const issue of issues) {
       console.log(`* "${issue.title}" (${issue.permalink})`);
     }
-    process.exit(1);
+    if (args.fail) process.exit(1);
   } else {
     console.log("🎉 Yay! There are no unresolved issues.");
   }
