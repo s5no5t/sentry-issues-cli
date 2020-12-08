@@ -20,13 +20,24 @@ async function main() {
     description: "Organization name in Sentry",
   });
 
+  yargsConfig.option("lastSeen", {
+    type: "string",
+    demandOption: false,
+    choices: ["1d", "7d"],
+    description:
+      "Time interval in which issues were last seen (see https://docs.sentry.io/product/sentry-basics/search for details)",
+  });
+
   const args = yargsConfig.argv;
 
   console.log(
-    `Checking for unresolved issues in Sentry project ${args.project} in the last 24 hours...`
+    `Checking for unresolved issues in Sentry project ${args.project}`
   );
 
-  const sentryQueryUrl = `https://sentry.io/api/0/projects/${args.organization}/${args.project}/issues/?query=lastSeen%3A-1d+is%3Aunresolved&statsPeriod=`;
+  const lastSeenParam = args.lastSeen
+    ? `lastSeen%3A${args.lastSeen === "1d" ? "-1d" : "-7d"}`
+    : undefined;
+  const sentryQueryUrl = `https://sentry.io/api/0/projects/${args.organization}/${args.project}/issues/?query=${lastSeenParam}+is%3Aunresolved&statsPeriod=`;
 
   const axiosResponse = await axios.default.get(sentryQueryUrl, {
     headers: {
@@ -56,6 +67,7 @@ void (async function () {
     await main();
   } catch (e) {
     console.error(e.message);
+    console.error(e);
     process.exit(1);
   }
 })();
