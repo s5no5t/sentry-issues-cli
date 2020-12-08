@@ -6,8 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": {
+    "name": "Stephan Oehlert",
+    "email": "soehlert@ecademy-learning.com"
+  },
   "license": "ISC",
+  "bin": {
+    "sentry-issues-cli": "bin/sentry-issues-cli"
+  },
   "devDependencies": {
     "@types/yargs": "15.0.11",
     "axios": "0.21.0",
