@@ -16,11 +16,13 @@
   "bin": {
     "sentry-issues-cli": "./bin/sentry-issues-cli"
   },
-  "devDependencies": {
-    "@types/yargs": "15.0.11",
+  "dependencies": {
     "axios": "0.21.0",
     "dotenv": "8.2.0",
-    "prettier": "2.2.1",
     "yargs": "16.2.0"
+  },
+  "devDependencies": {
+    "@types/yargs": "15.0.11",
+    "prettier": "2.2.1"
   }
 }
