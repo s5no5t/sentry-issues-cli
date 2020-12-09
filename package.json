@@ -11,6 +11,9 @@
     "email": "soehlert@ecademy-learning.com"
   },
   "license": "ISC",
+  "repository": {
+    "url": "https://github.com/jugglingthebits/sentry-issues-cli"
+  },
   "bin": {
     "sentry-issues-cli": "bin/sentry-issues-cli"
   },
