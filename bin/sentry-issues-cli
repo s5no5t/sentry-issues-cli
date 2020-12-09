@@ -7,9 +7,6 @@ const yargs = require("yargs");
 async function main() {
   dotenv.config();
 
-  const sentryToken = process.env.SENTRY_TOKEN;
-  if (!sentryToken) throw new Error("SENTRY_TOKEN not found");
-
   const yargsConfig = yargs.option("project", {
     type: "string",
     demandOption: true,
@@ -21,6 +18,14 @@ async function main() {
     demandOption: true,
     description: "Organization name in Sentry",
   });
+
+  yargsConfig
+    .option("sentryToken", {
+      type: "string",
+      demandOption: true,
+      description: "Sentry authentication token",
+    })
+    .env();
 
   yargsConfig.option("lastSeen", {
     type: "string",
