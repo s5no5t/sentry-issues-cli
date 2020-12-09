@@ -56,7 +56,7 @@ async function main() {
 
   const axiosResponse = await axios.default.get(sentryQueryUrl, {
     headers: {
-      Authorization: `Bearer ${sentryToken}`,
+      Authorization: `Bearer ${args.sentryToken}`,
     },
   });
 
