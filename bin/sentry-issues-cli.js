@@ -31,7 +31,7 @@ async function main() {
   yargsConfig.option("fail", {
     type: "boolean",
     demandOption: false,
-    default: true,
+    default: false,
     description:
       "Return non-zero code when there is at least one unresolved issue in Sentry",
   });
