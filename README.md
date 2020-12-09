@@ -10,4 +10,20 @@ Use `npm install -g sentry-issues-cli` to install.
 
 ## Usage
 
-Running `sentry-issues-cli` will show available parameters.
+Run `sentry-issues-cli` see available options.
+
+Available options:
+
+```
+Options:
+  --help          Show help                                            [boolean]
+  --version       Show version number                                  [boolean]
+  --project       Project name in Sentry                     [string] [required]
+  --organization  Organization name in Sentry                [string] [required]
+  --sentryToken   Sentry authentication token                [string] [required]
+  --lastSeen      Time interval in which issues were last seen (see
+                  https://docs.sentry.io/product/sentry-basics/search for
+                  details)                        [string] [choices: "1d", "7d"]
+  --fail          Return non-zero code when there is at least one unresolved
+                  issue in Sentry                     [boolean] [default: false]
+```
