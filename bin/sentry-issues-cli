@@ -27,6 +27,14 @@ async function main() {
     })
     .env();
 
+  yargs.option("level", {
+    type: "string",
+    demandOption: false,
+    default: "warning",
+    choices: ["warning", "error"],
+    description: "Sentry issue level",
+  });
+
   yargsConfig.option("lastSeen", {
     type: "string",
     demandOption: false,
@@ -52,7 +60,8 @@ async function main() {
   const lastSeenParam = args.lastSeen
     ? `lastSeen%3A${args.lastSeen === "1d" ? "-1d" : "-7d"}`
     : undefined;
-  const sentryQueryUrl = `https://sentry.io/api/0/projects/${args.organization}/${args.project}/issues/?query=${lastSeenParam}+is%3Aunresolved&statsPeriod=`;
+  const levelParam = `level%3A${args.level}`;
+  const sentryQueryUrl = `https://sentry.io/api/0/projects/${args.organization}/${args.project}/issues/?query=${lastSeenParam}+is%3Aunresolved+${levelParam}&statsPeriod=`;
 
   const axiosResponse = await axios.default.get(sentryQueryUrl, {
     headers: {

@@ -21,6 +21,8 @@ Options:
   --project       Project name in Sentry                     [string] [required]
   --organization  Organization name in Sentry                [string] [required]
   --sentryToken   Sentry authentication token                [string] [required]
+  --level         Sentry issue level
+                     [string] [choices: "warning", "error"] [default: "warning"]
   --lastSeen      Time interval in which issues were last seen (see
                   https://docs.sentry.io/product/sentry-basics/search for
                   details)                        [string] [choices: "1d", "7d"]
