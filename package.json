@@ -17,7 +17,7 @@
     "sentry-issues-cli": "./bin/sentry-issues-cli"
   },
   "dependencies": {
-    "axios": "0.21.1",
+    "axios": "0.24.0",
     "dotenv": "8.2.0",
     "yargs": "17.3.1"
   },
